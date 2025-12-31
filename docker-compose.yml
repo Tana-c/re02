@@ -1,0 +1,45 @@
+version: '3.8'
+
+# Development Docker Compose
+# สำหรับ production ให้ใช้: docker-compose -f docker-compose.production.yml
+
+services:
+  backend:
+    build:
+      context: ./database_generate
+      dockerfile: Dockerfile
+    container_name: ai-interviewer-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4o}
+      - OPENAI_TEMPERATURE=${OPENAI_TEMPERATURE:-0.1}
+    volumes:
+      - ./database_generate:/app
+      - /app/__pycache__
+    networks:
+      - ai-interviewer-network
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./dashboard/frontend
+      dockerfile: Dockerfile
+    container_name: ai-interviewer-frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=${VITE_API_URL:-http://localhost:8000}
+    volumes:
+      - ./dashboard/frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - ai-interviewer-network
+    restart: unless-stopped
+
+networks:
+  ai-interviewer-network:
+    driver: bridge

@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./database_generate
+      dockerfile: Dockerfile.production
+    container_name: ai-interviewer-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4o}
+      - OPENAI_TEMPERATURE=${OPENAI_TEMPERATURE:-0.1}
+    volumes:
+      # Mount database file for persistence
+      - ./database_generate/interview_data.db:/app/interview_data.db
+    networks:
+      - ai-interviewer-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  frontend:
+    build:
+      context: ./dashboard/frontend
+      dockerfile: Dockerfile.production
+      args:
+        - VITE_API_URL=${VITE_API_URL:-http://72.61.120.205:8000}
+    container_name: ai-interviewer-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - ai-interviewer-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+networks:
+  ai-interviewer-network:
+    driver: bridge
+
