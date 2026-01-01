@@ -11,7 +11,7 @@ export const ErrorState = ({ error }) => {
         <h2 className="text-xl font-bold text-slate-800 mb-2 text-center">Error Loading Data</h2>
         <p className="text-slate-600 text-center mb-4">{error}</p>
         <p className="text-sm text-slate-500 text-center">
-          Make sure the API server is running at <code className="bg-slate-100 px-2 py-1 rounded">http://localhost:8000</code>
+          Make sure the API server is running at <code className="bg-slate-100 px-2 py-1 rounded">http://localhost:8835</code>
         </p>
         <button 
           onClick={() => window.location.reload()} 

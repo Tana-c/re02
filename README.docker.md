@@ -32,8 +32,8 @@ docker-compose up -d --build
 ### 3. Access the Applications
 
 - **Frontend Dashboard**: http://localhost:5173
-- **Backend API**: http://localhost:8000
-- **API Documentation**: http://localhost:8000/docs
+- **Backend API**: http://localhost:8835
+- **API Documentation**: http://localhost:8835/docs
 
 ## Docker Commands
 
@@ -104,7 +104,7 @@ AIInterviewer/
 ## Services
 
 ### Backend (FastAPI)
-- **Port**: 8000
+- **Port**: 8835
 - **Hot Reload**: Enabled via volume mounting
 - **Base Image**: python:3.11-slim
 
@@ -126,11 +126,11 @@ Both services run on a shared Docker network (`ai-interviewer-network`) allowing
 ## Troubleshooting
 
 ### Port Already in Use
-If ports 8000 or 5173 are already in use, modify the port mappings in `docker-compose.yml`:
+If ports 8835 or 5173 are already in use, modify the port mappings in `docker-compose.yml`:
 
 ```yaml
 ports:
-  - "8001:8000"  # Change host port (left side)
+  - "8836:8835"  # Change host port (left side)
 ```
 
 ### Container Won't Start

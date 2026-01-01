@@ -16,7 +16,7 @@ export const FindingsTab = ({ executiveSummary, setExecutiveSummary }) => {
     const fetchExecutiveSummary = async () => {
       try {
         setLoading(true);
-        const response = await fetch('http://localhost:8000/insights/executive-summary');
+        const response = await fetch('http://localhost:8835/insights/executive-summary');
         if (!response.ok) throw new Error('Failed to fetch executive summary');
         const data = await response.json();
         setExecutiveSummary(data);

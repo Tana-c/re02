@@ -7,7 +7,7 @@
 - [ ] ใส่ OpenAI API Key ใน `.env`
 - [ ] ตรวจสอบว่า `interview_data.db` มีอยู่
 - [ ] Docker และ Docker Compose ติดตั้งแล้ว
-- [ ] Port 80 และ 8000 เปิดใช้งาน
+- [ ] Port 80 และ 8835 เปิดใช้งาน
 
 ## หลัง Deploy
 
@@ -18,16 +18,16 @@
 docker ps
 
 # ควรเห็น:
-# - ai-interviewer-backend (port 8000)
+# - ai-interviewer-backend (port 8835)
 # - ai-interviewer-frontend (port 80)
 ```
 
 ### ตรวจสอบ URLs
 
 - [ ] Frontend: http://72.61.120.205/demodashbord
-- [ ] Backend API: http://72.61.120.205:8000
-- [ ] API Docs: http://72.61.120.205:8000/docs
-- [ ] Health Check Backend: http://72.61.120.205:8000/health
+- [ ] Backend API: http://72.61.120.205:8835
+- [ ] API Docs: http://72.61.120.205:8835/docs
+- [ ] Health Check Backend: http://72.61.120.205:8835/health
 - [ ] Health Check Frontend: http://72.61.120.205/health
 
 ### ตรวจสอบ Functionality
@@ -84,7 +84,7 @@ docker exec ai-interviewer-backend python -c "import sqlite3; conn = sqlite3.con
 
 1. ตรวจสอบ logs: `docker-compose -f docker-compose.production.yml logs backend`
 2. ตรวจสอบ database: `ls -lh database_generate/interview_data.db`
-3. ทดสอบ API โดยตรง: `curl http://72.61.120.205:8000/health`
+3. ทดสอบ API โดยตรง: `curl http://72.61.120.205:8835/health`
 
 ### ถ้า Database ไม่พบ
 
@@ -109,6 +109,6 @@ docker-compose -f docker-compose.production.yml ps
 docker stats
 
 # Network connectivity
-docker exec ai-interviewer-frontend curl -s http://backend:8000/health
+docker exec ai-interviewer-frontend curl -s http://backend:8835/health
 ```
 

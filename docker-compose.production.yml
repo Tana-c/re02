@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile.production
     container_name: ai-interviewer-backend
     ports:
-      - "8000:8000"
+      - "8835:8835"
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4o}
@@ -19,7 +19,7 @@ services:
       - ai-interviewer-network
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:8835/health"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -30,7 +30,7 @@ services:
       context: ./dashboard/frontend
       dockerfile: Dockerfile.production
       args:
-        - VITE_API_URL=${VITE_API_URL:-http://72.61.120.205:8000}
+        - VITE_API_URL=${VITE_API_URL:-http://72.61.120.205:8835}
     container_name: ai-interviewer-frontend
     ports:
       - "80:80"

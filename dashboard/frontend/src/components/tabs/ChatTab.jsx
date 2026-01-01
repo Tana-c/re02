@@ -16,8 +16,8 @@ export const ChatTab = () => {
     const loadInitialData = async () => {
       try {
         const [suggestionsRes, tablesRes] = await Promise.all([
-          fetch('http://localhost:8000/chat/suggestions'),
-          fetch('http://localhost:8000/chat/tables')
+          fetch('http://localhost:8835/chat/suggestions'),
+          fetch('http://localhost:8835/chat/tables')
         ]);
         
         const suggestionsData = await suggestionsRes.json();
@@ -62,7 +62,7 @@ export const ChatTab = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8000/chat/ask', {
+      const response = await fetch('http://localhost:8835/chat/ask', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

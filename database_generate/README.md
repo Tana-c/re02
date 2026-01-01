@@ -39,10 +39,10 @@ python run_api.py
 Or using uvicorn directly:
 
 ```bash
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8835
 ```
 
-The API will be available at: **http://localhost:8000**
+The API will be available at: **http://localhost:8835**
 
 ## Project Structure
 
@@ -72,8 +72,8 @@ database_generate/
 ## API Documentation
 
 Once the server is running, visit:
-- **Interactive API Docs**: http://localhost:8000/docs
-- **Alternative Docs**: http://localhost:8000/redoc
+- **Interactive API Docs**: http://localhost:8835/docs
+- **Alternative Docs**: http://localhost:8835/redoc
 
 ## API Endpoints
 
@@ -116,31 +116,31 @@ Once the server is running, visit:
 ### Get All Interviews
 
 ```bash
-curl http://localhost:8000/interviews
+curl http://localhost:8835/interviews
 ```
 
 ### Get Interview Detail
 
 ```bash
-curl http://localhost:8000/interviews/P1
+curl http://localhost:8835/interviews/P1
 ```
 
 ### Search Transcripts
 
 ```bash
-curl "http://localhost:8000/search/transcripts?q=Sunlight"
+curl "http://localhost:8835/search/transcripts?q=Sunlight"
 ```
 
 ### Get Analytics Summary
 
 ```bash
-curl http://localhost:8000/analytics/summary
+curl http://localhost:8835/analytics/summary
 ```
 
 ### Filter Personas by Age
 
 ```bash
-curl "http://localhost:8000/personas?min_age=30&max_age=40"
+curl "http://localhost:8835/personas?min_age=30&max_age=40"
 ```
 
 ## Integration with Dashboard
@@ -149,7 +149,7 @@ Update your React dashboard to fetch data from the API:
 
 ```javascript
 // Example: Fetch interviews
-const response = await fetch('http://localhost:8000/interviews');
+const response = await fetch('http://localhost:8835/interviews');
 const interviews = await response.json();
 ```
 

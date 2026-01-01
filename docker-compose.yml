@@ -10,7 +10,7 @@ services:
       dockerfile: Dockerfile
     container_name: ai-interviewer-backend
     ports:
-      - "8000:8000"
+      - "8835:8835"
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4o}
@@ -30,7 +30,7 @@ services:
     ports:
       - "5173:5173"
     environment:
-      - VITE_API_URL=${VITE_API_URL:-http://localhost:8000}
+      - VITE_API_URL=${VITE_API_URL:-http://localhost:8835}
     volumes:
       - ./dashboard/frontend:/app
       - /app/node_modules

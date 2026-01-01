@@ -52,7 +52,7 @@ export const ThemesTab = ({ themesData: initialThemesData, aiInsights, setAiInsi
     const loadAiInsights = async () => {
       try {
         setInsightsLoading(true);
-        const response = await fetch('http://localhost:8000/insights/theme-sentiment-insights');
+        const response = await fetch('http://localhost:8835/insights/theme-sentiment-insights');
         if (!response.ok) throw new Error('Failed to fetch AI insights');
         const data = await response.json();
         if (data.success) {

@@ -40,8 +40,8 @@ docker-compose -f docker-compose.production.yml logs -f
 ### 4. ตรวจสอบการทำงาน
 
 - Frontend: http://72.61.120.205/demodashbord
-- Backend API: http://72.61.120.205:8000
-- API Docs: http://72.61.120.205:8000/docs
+- Backend API: http://72.61.120.205:8835
+- API Docs: http://72.61.120.205:8835/docs
 
 ### 5. คำสั่งที่ใช้บ่อย
 

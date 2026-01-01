@@ -23,7 +23,7 @@ python init_database.py
 python run_api.py
 ```
 
-The API will be available at: **http://localhost:8000**
+The API will be available at: **http://localhost:8835**
 
 ### 2. Start the Dashboard Frontend
 
@@ -96,10 +96,10 @@ dashboard/frontend/src/
 Create a `.env` file in the frontend directory (optional):
 
 ```bash
-REACT_APP_API_URL=http://localhost:8000
+REACT_APP_API_URL=http://localhost:8835
 ```
 
-Default API URL is `http://localhost:8000` if not specified.
+Default API URL is `http://localhost:8835` if not specified.
 
 ## Troubleshooting
 
@@ -108,10 +108,10 @@ Default API URL is `http://localhost:8000` if not specified.
 **Problem**: Dashboard shows error message about failed API connection
 
 **Solutions**:
-1. Make sure API server is running at `http://localhost:8000`
+1. Make sure API server is running at `http://localhost:8835`
 2. Check API server terminal for errors
 3. Verify database is initialized (`interview_data.db` exists)
-4. Try accessing http://localhost:8000/docs directly in browser
+4. Try accessing http://localhost:8835/docs directly in browser
 
 ### CORS Issues
 
@@ -119,7 +119,7 @@ Default API URL is `http://localhost:8000` if not specified.
 
 **Solution**: The API already has CORS enabled for all origins. If issues persist:
 - Check browser console for specific error
-- Verify API server is running on port 8000
+- Verify API server is running on port 8835
 - Try clearing browser cache
 
 ### Empty Data
@@ -129,7 +129,7 @@ Default API URL is `http://localhost:8000` if not specified.
 **Solutions**:
 1. Check API server logs for errors
 2. Verify database has data: `python init_database.py`
-3. Test API endpoints directly: http://localhost:8000/interviews
+3. Test API endpoints directly: http://localhost:8835/interviews
 4. Check browser console for JavaScript errors
 
 ## Development
@@ -165,4 +165,4 @@ Edit the `transformDataForDashboard()` function in `services/api.js` to change h
 - `GET /brands` - All brands
 - `GET /analytics/summary` - Analytics summary
 
-See full API documentation at: http://localhost:8000/docs
+See full API documentation at: http://localhost:8835/docs

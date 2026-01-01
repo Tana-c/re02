@@ -7,7 +7,7 @@
 - Server: 72.61.120.205
 - Docker และ Docker Compose ติดตั้งแล้ว
 - Git ติดตั้งแล้ว
-- Port 80 และ 8000 เปิดใช้งาน
+- Port 80 และ 8835 เปิดใช้งาน
 
 ## ขั้นตอนการ Deploy
 
@@ -30,7 +30,7 @@ cp .env.example .env
 OPENAI_API_KEY=your_actual_openai_api_key
 OPENAI_MODEL=gpt-4o
 OPENAI_TEMPERATURE=0.1
-VITE_API_URL=http://72.61.120.205:8000
+VITE_API_URL=http://72.61.120.205:8835
 ```
 
 ### 3. ตรวจสอบ Database
@@ -63,11 +63,11 @@ docker-compose -f docker-compose.production.yml logs -f
 ### 5. ตรวจสอบการทำงาน
 
 - **Frontend**: http://72.61.120.205/demodashbord
-- **Backend API**: http://72.61.120.205:8000
-- **API Documentation**: http://72.61.120.205:8000/docs
+- **Backend API**: http://72.61.120.205:8835
+- **API Documentation**: http://72.61.120.205:8835/docs
 - **Health Check**: 
   - Frontend: http://72.61.120.205/health
-  - Backend: http://72.61.120.205:8000/health
+  - Backend: http://72.61.120.205:8835/health
 
 ## คำสั่งที่ใช้บ่อย
 
@@ -140,11 +140,11 @@ docker exec ai-interviewer-backend python update_personas_thai.py
 ```bash
 # ตรวจสอบ port ที่ใช้งาน
 sudo netstat -tulpn | grep :80
-sudo netstat -tulpn | grep :8000
+sudo netstat -tulpn | grep :8835
 
 # หรือใช้
 sudo lsof -i :80
-sudo lsof -i :8000
+sudo lsof -i :8835
 ```
 
 ### Container ไม่ start
@@ -190,7 +190,7 @@ ls -la database_generate/
 ## Security Considerations
 
 1. **เปลี่ยน OpenAI API Key** ใน `.env` ให้เป็น key จริง
-2. **ตั้งค่า Firewall** ให้เปิดเฉพาะ port ที่จำเป็น (80, 8000)
+2. **ตั้งค่า Firewall** ให้เปิดเฉพาะ port ที่จำเป็น (80, 8835)
 3. **ใช้ HTTPS** ใน production (แนะนำให้ใช้ reverse proxy เช่น nginx หรือ traefik)
 4. **Backup Database** เป็นประจำ
 
@@ -207,7 +207,7 @@ cp database_generate/interview_data.db database_generate/interview_data.db.backu
 
 ```bash
 # Backend health
-curl http://72.61.120.205:8000/health
+curl http://72.61.120.205:8835/health
 
 # Frontend health
 curl http://72.61.120.205/health

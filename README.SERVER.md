@@ -62,15 +62,15 @@ docker-compose -f docker-compose.production.yml logs -f
 ### 5. ตรวจสอบ
 
 - Frontend: http://72.61.120.205/demodashbord
-- Backend: http://72.61.120.205:8000
-- API Docs: http://72.61.120.205:8000/docs
+- Backend: http://72.61.120.205:8835
+- API Docs: http://72.61.120.205:8835/docs
 
 ## URLs หลัง Deploy
 
 - **Frontend Dashboard**: http://72.61.120.205/demodashbord
-- **Backend API**: http://72.61.120.205:8000
-- **API Documentation**: http://72.61.120.205:8000/docs
-- **Health Check (Backend)**: http://72.61.120.205:8000/health
+- **Backend API**: http://72.61.120.205:8835
+- **API Documentation**: http://72.61.120.205:8835/docs
+- **Health Check (Backend)**: http://72.61.120.205:8835/health
 - **Health Check (Frontend)**: http://72.61.120.205/health
 
 ## คำสั่งที่ใช้บ่อย
